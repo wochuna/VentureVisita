@@ -5,7 +5,7 @@
 ## Key Features
 
 - **User Accounts**: Customers register and log in with only a username and password.
-- **Provider Management**: Hike providers can create and manage their hiking trip listings, including details such as title, description, price, availability, and location.
+- **Provider Management**: Hike providers can create and manage their hiking trip listings, including details such as title, description, price and location.
 - **Admin Dashboard**: Administrators have control over user accounts and hike listings, enabling actions such as user deletion and activity management.
 
 
