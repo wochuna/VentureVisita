@@ -8,6 +8,8 @@ class User(models.Model):
     ]
     username = models.CharField(max_length=150, unique=True)
     email = models.EmailField(unique=True)
+    phone = models.CharField(max_length=20, blank=True, null=True)
+    bio = models.TextField(blank=True, null=True)
     password = models.CharField(max_length=128)
     role = models.CharField(max_length=50, choices=USER_ROLES)
     date_joined = models.DateTimeField(auto_now_add=True)
