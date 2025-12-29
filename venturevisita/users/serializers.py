@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import User
-from django.contrib.auth.hashers import make_password, check_password
+from django.contrib.auth.hashers import make_password, check_password 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -20,7 +20,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         return super().create(validated_data)
     
 class LoginSerializer(serializers.Serializer):
-    username = serializers.CharField()  # or accept email if you prefer
+    username = serializers.CharField()
     password = serializers.CharField(write_only=True)
 
     def validate(self, attrs):
@@ -34,3 +34,4 @@ class LoginSerializer(serializers.Serializer):
             raise serializers.ValidationError({"detail": "Invalid credentials."})
         attrs['user'] = user
         return attrs
+    
