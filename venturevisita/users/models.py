@@ -14,6 +14,19 @@ class User(models.Model):
     role = models.CharField(max_length=50, choices=USER_ROLES)
     date_joined = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.username
+    
+    
+
+    @property
+    def is_authenticated(self):
+        return True
+
+    @property
+    def is_anonymous(self):
+        return False
+
 class AuthToken(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     key = models.CharField(max_length=40, unique=True)
@@ -21,4 +34,4 @@ class AuthToken(models.Model):
 
 
     def __str__(self):
-        return self.username
+        return self.key

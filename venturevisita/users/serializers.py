@@ -13,12 +13,23 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'phone', 'password', 'role']
+        fields = ['username', 'email', 'phone', 'password', 'role', 'bio']
         
+    def create(self, attrs):
+        role = attrs.get('role')
+        if role == 'provider':
+            phone = attrs.get('phone') or ''
+            bio = attrs.get('bio') or ''
+            if not phone.strip():
+                raise serializers.ValidationError({"phone": "Phone is required for providers."})
+            if not bio.strip():
+                raise serializers.ValidationError({"bio": "Bio is required for providers."})
+        return attrs
+    
     def create(self, validated_data):
         validated_data['password'] = make_password(validated_data['password'])
         return super().create(validated_data)
-    
+
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField(write_only=True)

@@ -3,8 +3,6 @@ from rest_framework.routers import DefaultRouter
 from .views import HikeViewSet
 
 router = DefaultRouter()
-router.register(r'hikes', HikeViewSet)
+router.register(r'hikes', HikeViewSet, basename='hike')
 
-urlpatterns =[
-    path('', include(router.urls)),
-]
+urlpatterns = router.urls
