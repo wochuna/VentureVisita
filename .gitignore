@@ -1,3 +1,5 @@
 # Ignore settings.py
 venturevisita/venturevisita/settings.py
 venturevisita/__pycache__/
+users/**/__pycache__/
+hikes/**/__pycache__/
